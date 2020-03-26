@@ -1,7 +1,7 @@
 # Build:
-#  docker build -t darioc1985/ros-send-images .
+#  docker build -t darioc1985:ros-open-usbcam .
 # Usage:
-# docker pull darioc1985/ros-send-images
+# docker pull darioc1985:ros-open-usbcam .
 
 # Get ros full image from dockerhub
 FROM ros
