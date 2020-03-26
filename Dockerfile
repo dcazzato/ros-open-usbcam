@@ -10,12 +10,8 @@ LABEL mantainer "Dario Cazzato <dcazzato85@gmail.com>"
 ENV ROS_DISTRO melodic
 
 RUN apt-get update && apt-get install -y \
-    #ros-melodic-usb-cam \
     apt-utils \
     ros-${ROS_DISTRO}-usb-cam \
-    python-rosdep \
-    python-rosinstall \
-    python-vcstools \
     ros-${ROS_DISTRO}-vision-opencv \
     ros-${ROS_DISTRO}-compressed-image-transport &&\
     apt-get -y clean &&\
@@ -26,11 +22,12 @@ RUN apt-get update && apt-get install -y \
 
 RUN sudo usermod -a -G users "$(whoami)"
 RUN sudo usermod -a -G video "$(whoami)"
+
 # copy project folder
 COPY ./ /src
 COPY ./ros_entrypoint.bash /
 
-RUN chmod +x ./ros_entrypoint.bash
+#RUN chmod +x ./ros_entrypoint.bash
 
 ENTRYPOINT ["/ros_entrypoint.bash"]
 CMD ["bash"]
