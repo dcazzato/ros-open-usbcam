@@ -1,7 +1,7 @@
 # Build:
-#  docker build -t darioc1985:ros-open-usbcam .
+#  docker build -t darioc1985/ros-open-usbcam .
 # Usage:
-# docker pull darioc1985:ros-open-usbcam .
+# docker pull darioc1985/ros-open-usbcam .
 
 # Get ros full image from dockerhub
 FROM ros
@@ -29,6 +29,8 @@ RUN sudo usermod -a -G video "$(whoami)"
 # copy project folder
 COPY ./ /src
 COPY ./ros_entrypoint.bash /
+
+RUN chmod +x ./ros_entrypoint.bash
 
 ENTRYPOINT ["/ros_entrypoint.bash"]
 CMD ["bash"]
